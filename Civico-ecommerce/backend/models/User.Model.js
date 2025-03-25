@@ -1,0 +1,64 @@
+const mongoose = require('mongoose')
+const UserSchema = new mongoose.Schema({
+    mobileNumber:{
+        type:String,
+        required:true
+    },
+    name:{
+        type:String,
+    },
+    email:{
+        type:String,
+        required:false,
+        unique:false,
+        sparse:false
+    },
+    Typeuse:{
+        type:String,
+        enum: ['Personal', 'Company'],
+    },
+    Company:{
+        companyName:{
+            type:String,
+        },
+        GSTnumber:{
+            type:String,
+        }
+    },
+    Site:[
+        {
+            siteName:{
+                type:String,
+            },
+            siteAddress:{
+                type:String,
+            },
+            siteCity:{
+                type:String,
+            },
+            siteState:{
+                type:String,
+            },
+            sitePin:{
+                type:String,   
+            }
+        }
+    ],
+    role:{
+        type:String,
+        enum:['admin','user'],
+        default:'user',
+    },
+    otp:{
+        type:String
+    },
+    otpExpiresIn:{
+        type:Date
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
+    }
+})
+const userModel = mongoose.model('user',UserSchema)
+module.exports = userModel

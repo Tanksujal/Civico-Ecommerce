@@ -1,0 +1,10 @@
+const express = require('express')
+const router = express.Router()
+const { VerifyToken } = require('../middleware/auth.Middleware')
+const { addcart, getCart, deleteCartItem, updateQuantity, updateminQuantity } = require('../controllers/cart.Controller')
+router.post('/addcart',VerifyToken,addcart)
+router.get('/getcart',VerifyToken,getCart)
+router.delete('/deleteCartItem',VerifyToken,deleteCartItem)
+router.put('/updateCartQuantity',VerifyToken,updateQuantity)
+router.put('/updateminQuantity',VerifyToken,updateminQuantity)
+module.exports = router

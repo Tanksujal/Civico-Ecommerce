@@ -1,0 +1,10 @@
+const express = require('express')
+const router = express.Router()
+const { VerifyToken } = require('../middleware/auth.Middleware')
+const { Placeorder, getUserOrder, getAllOrder, updateorderStatus } = require('../controllers/order.Controller')
+const IsAdmin = require('../middleware/admin.Middleware')
+router.post('/placeorder',VerifyToken,Placeorder)
+router.get('/getUserOrder',VerifyToken,getUserOrder)
+router.get('/getAllOrder',IsAdmin,getAllOrder)
+router.put('/updateorderStatus',IsAdmin,updateorderStatus)
+module.exports = router

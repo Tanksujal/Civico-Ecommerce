@@ -1,0 +1,10 @@
+const express = require('express')
+const router = express.Router()
+router.use('/auth',require('../routes/authRoutes'))
+router.use('/admin',require('./adminRoutes'))
+router.use('/category',require('./categoryRoutes'))
+router.use('/subcategory',require('./subcategoryRoutes'))
+router.use('/product',require('./ProductRoutes'))
+router.use('/cart',require('./cartRoutes'))
+router.use('/order',require('./orderRoutes'))
+module.exports = router
